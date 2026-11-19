@@ -15,6 +15,10 @@ java {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.14"
+}
+
 repositories {
     mavenCentral()
 }
@@ -39,7 +43,6 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform { excludeTags 'integration' }   // unit tests only
-    finalizedBy 'jacocoTestReport'
 }
 
 tasks.register('integrationTest', Test) {
