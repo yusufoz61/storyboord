@@ -137,10 +137,7 @@ jobs:
     steps:
       - name: Deploy backend to staging
         run: curl -fsS "${{ secrets.RENDER_BACKEND_HOOK }}&imgURL=${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}"
-      - name: Deploy frontend to staging
-        run: curl -fsS "${{ secrets.RENDER_FRONTEND_HOOK }}&imgURL=${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}"
 
-  # ---------- 5. production: waits for a human (required reviewer) ----------
   deploy-production:
     needs: deploy-staging
     runs-on: ubuntu-latest
@@ -148,5 +145,3 @@ jobs:
     steps:
       - name: Deploy backend to production
         run: curl -fsS "${{ secrets.RENDER_BACKEND_HOOK }}&imgURL=${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}"
-      - name: Deploy frontend to production
-        run: curl -fsS "${{ secrets.RENDER_FRONTEND_HOOK }}&imgURL=${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}"

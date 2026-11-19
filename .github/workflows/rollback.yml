@@ -14,5 +14,3 @@ jobs:
     steps:
       - name: Redeploy old backend image
         run: curl -fsS "${{ secrets.RENDER_BACKEND_HOOK }}&imgURL=ghcr.io/${{ github.repository }}-backend:${{ github.event.inputs.tag }}"
-      - name: Redeploy old frontend image
-        run: curl -fsS "${{ secrets.RENDER_FRONTEND_HOOK }}&imgURL=ghcr.io/${{ github.repository }}-frontend:${{ github.event.inputs.tag }}"
