@@ -3,8 +3,8 @@ FROM eclipse-temurin:25-jdk AS build
 WORKDIR /app
 COPY gradlew settings.gradle build.gradle ./
 COPY gradle ./gradle
-RUN chmod +x gradlew && ./gradlew --no-daemon dependencies > /dev/null 2>&1 || true
-COPY ../storyboord-apply/backend/src ./src
+RUN sed -i 's/\r$//' gradlew && chmod +x gradlew && ./gradlew --no-daemon dependencies > /dev/null 2>&1 || true
+COPY src ./src
 RUN ./gradlew --no-daemon bootJar -x test
 
 # ---- run stage ----

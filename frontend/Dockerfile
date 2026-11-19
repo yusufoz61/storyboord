@@ -1,9 +1,9 @@
 # ---- build stage ----
 FROM node:24 AS build
 WORKDIR /app
-COPY ../storyboord-apply/frontend/package.json package-lock.json ./
+COPY package.json package-lock.json ./
 RUN npm ci
-COPY ../storyboord-apply/frontend .
+COPY . .
 RUN npm run build-only
 
 # ---- run stage ----
