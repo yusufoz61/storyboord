@@ -3,6 +3,7 @@
 
 <template>
   <h1>You did it!</h1>
+  <h1>hallo</h1>
   <p>
     Visit <a
       href="https://vuejs.org/"
